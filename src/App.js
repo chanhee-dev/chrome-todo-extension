@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { Paper } from '@mui/material';
+import TodoListHeader from './TodoListHeader';
+import TodoListContent from './TodoListContent';
+import TodoListFooter from './TodoListFooter';
 
 function App() {
+  const [todoList, setTodoList] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Paper sx={{
+        width: '400px'
+      }}>
+        <TodoListHeader setTodoList={setTodoList} />
+        <TodoListContent todoList={todoList} setTodoList={setTodoList} />
+        <TodoListFooter setTodoList={setTodoList} />
+      </Paper>
     </div>
   );
 }
